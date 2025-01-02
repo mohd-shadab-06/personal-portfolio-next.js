@@ -1,0 +1,55 @@
+import { BlogLayout } from "@/components/BlogLayout";
+
+import { CodeWindow } from "@/components/CodeWindow";
+
+export const meta = {
+  date: "2025-01-03",
+  title: "Learning React Hooks",
+  description: "Starting with the hooks in the react",
+  image:
+    "https://miro.medium.com/v2/resize:fit:896/1*_BFgDXAAZuvWDr2PFa9f3g.png",
+  tags: ["React-Hooks", "JavaScript"],
+};
+
+export default (props) => <BlogLayout meta={meta} {...props} />;
+
+# What are Hooks?
+
+Hooks are functions that let you "hook into" React's features, such as state management, lifecycle methods, and context, without writing a class. The two most commonly used hooks are:
+
+1 - useState - For managing state.
+
+2 - useEffect - For handling side effects (like fetching data, subscriptions, etc.).
+
+## Rules of Hooks
+
+Call Hooks at the Top Level: Don’t call hooks inside loops, conditions, or nested functions. Always call them at the top level of your React function.
+
+Call Hooks Only in React Functions: You can use hooks only inside functional components or custom hooks.
+
+#Core Hooks
+
+## 1. UseState
+
+Manages local state in a functional component.
+
+useState takes an initial state as an argument and returns an array with two elements: 1 - The current state. 2 - A function to update the state.
+
+<CodeWindow title="useState.jsx">
+
+```TSX
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+</CodeWindow>

@@ -12,6 +12,7 @@ const nextConfig = {
       "plus.unsplash.com",
       "miro.medium.com",
       "upload.wikimedia.org",
+      "medium.com",
     ],
   },
   experimental: {
