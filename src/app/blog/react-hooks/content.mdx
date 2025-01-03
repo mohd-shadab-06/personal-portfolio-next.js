@@ -53,3 +53,36 @@ function Counter() {
 ```
 
 </CodeWindow>
+
+## 1. useEffect
+
+Handles side effects, such as fetching data, manipulating the DOM, or setting up subscriptions.
+
+Dependencies: The second argument to useEffect is an array of dependencies. The effect re-runs when any dependency changes.
+
+1 - []: Runs only once.
+2 - [dependency]: Runs when dependency changes.
+3 - No array: Runs after every render.
+
+<CodeWindow title="useEffect.jsx">
+
+```TSX
+import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup to avoid memory leaks
+  }, []); // Empty dependency array means the effect runs only once.
+
+  return <div>Timer: {seconds}s</div>;
+}
+
+```
+
+</CodeWindow>
