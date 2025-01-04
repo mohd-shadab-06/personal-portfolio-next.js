@@ -54,7 +54,7 @@ function Counter() {
 
 </CodeWindow>
 
-## 1. useEffect
+## 2. useEffect
 
 Handles side effects, such as fetching data, manipulating the DOM, or setting up subscriptions.
 
@@ -82,6 +82,35 @@ function Timer() {
 
   return <div>Timer: {seconds}s</div>;
 }
+
+```
+
+</CodeWindow>
+
+## 2. useContext
+
+Accesses values from React's context API without writing a consumer component.
+
+<CodeWindow title="useContext.jsx">
+
+```TSX
+import React, { useContext, createContext } from 'react';
+
+const ThemeContext = createContext();
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  return <button style={{ backgroundColor: theme }}>Click Me</button>;
+}
+
+function App() {
+  return (
+    <ThemeContext.Provider value="lightblue">
+      <ThemedButton />
+    </ThemeContext.Provider>
+  );
+}
+
 
 ```
 
