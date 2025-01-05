@@ -87,7 +87,7 @@ function Timer() {
 
 </CodeWindow>
 
-## 2. useContext
+## 3. useContext
 
 Accesses values from React's context API without writing a consumer component.
 
@@ -110,6 +110,74 @@ function App() {
     </ThemeContext.Provider>
   );
 }
+
+
+```
+
+</CodeWindow>
+
+## 4. useReducer
+
+An alternative to useState, useful for managing more complex state logic.
+
+<CodeWindow title="useReducer.jsx">
+
+```TSX
+import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  );
+}
+
+
+
+```
+
+</CodeWindow>
+
+## 5. useRef
+
+Accesses a DOM element directly or stores a mutable value that persists across renders.
+
+<CodeWindow title="useRef.jsx">
+
+```TSX
+import React, { useRef } from 'react';
+
+function FocusInput() {
+  const inputRef = useRef();
+
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={focusInput}>Focus Input</button>
+    </div>
+  );
+}
+
 
 
 ```
