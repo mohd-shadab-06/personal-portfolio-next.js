@@ -110,8 +110,6 @@ function App() {
     </ThemeContext.Provider>
   );
 }
-
-
 ```
 
 </CodeWindow>
@@ -147,9 +145,6 @@ function Counter() {
     </div>
   );
 }
-
-
-
 ```
 
 </CodeWindow>
@@ -177,9 +172,29 @@ function FocusInput() {
     </div>
   );
 }
+```
 
+</CodeWindow>
 
+## 6. useMemo
 
+Memoizes the result of a computation to avoid recalculating it on every render.
+
+<CodeWindow title="useMemo.jsx">
+
+```TSX
+import React, { useState, useMemo } from 'react';
+
+function ExpensiveCalculation({ num }) {
+  const calculate = (n) => {
+    console.log('Calculating...');
+    return n * 2;
+  };
+
+  const result = useMemo(() => calculate(num), [num]);
+
+  return <p>Result: {result}</p>;
+}
 ```
 
 </CodeWindow>
