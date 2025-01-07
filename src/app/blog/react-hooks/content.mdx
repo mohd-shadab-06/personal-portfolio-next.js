@@ -198,3 +198,68 @@ function ExpensiveCalculation({ num }) {
 ```
 
 </CodeWindow>
+
+## 7. useCallback
+
+Memoizes a function to prevent unnecessary re-creation during renders.
+
+<CodeWindow title="useCallback.jsx">
+
+```TSX
+import React, { useState, useCallback } from 'react';
+
+function Button({ onClick }) {
+  console.log('Rendering Button');
+  return <button onClick={onClick}>Click me</button>;
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <Button onClick={increment} />
+    </div>
+  );
+}
+```
+
+</CodeWindow>
+
+## 8. useImperativeHandle
+
+Customizes the instance value exposed when using React.forwardRef.
+
+<CodeWindow title="useImperativeHandle.jsx">
+
+```TSX
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+
+const FancyInput = forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current.focus(),
+  }));
+
+  return <input ref={inputRef} />;
+});
+
+function App() {
+  const inputRef = useRef();
+
+  return (
+    <div>
+      <FancyInput ref={inputRef} />
+      <button onClick={() => inputRef.current.focus()}>Focus Input</button>
+    </div>
+  );
+}
+```
+
+</CodeWindow>
